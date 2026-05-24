@@ -13,3 +13,4 @@
       * `upos-sz-mirroraliov.bilivideo.com` (阿里云 CDN，海外)
       * `upos-sz-mirrorcosov.bilivideo.com` (腾讯云 CDN，海外)
       * `upos-sz-mirrorhwov.bilivideo.com` (华为云 CDN，海外)
+      * `cn-hk-eq-01-03.bilivideo.com` (Equinix IX CDN，香港)
