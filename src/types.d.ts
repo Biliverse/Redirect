@@ -14,10 +14,17 @@ export interface Settings {
          * - `'upos-sz-mirroraliov.bilivideo.com'` - 阿里云 CDN，海外
          * - `'upos-sz-mirrorcosov.bilivideo.com'` - 腾讯云 CDN，海外
          * - `'upos-sz-mirrorhwov.bilivideo.com'` - 华为云 CDN，海外
+         * - `'cn-hk-eq-01-01.bilivideo.com'` - Equinix IX CDN，香港
+         * - `'cn-hk-eq-01-03.bilivideo.com'` - Equinix IX CDN，香港
+         * - `'cn-hk-eq-01-09.bilivideo.com'` - Equinix IX CDN，香港
+         * - `'cn-hk-eq-01-10.bilivideo.com'` - Equinix IX CDN，香港
+         * - `'cn-hk-eq-01-12.bilivideo.com'` - Equinix IX CDN，香港
+         * - `'cn-hk-eq-01-13.bilivideo.com'` - Equinix IX CDN，香港
+         * - `'cn-hk-eq-01-14.bilivideo.com'` - Equinix IX CDN，香港
          *
          * @defaultValue "upos-sz-mirrorali.bilivideo.com"
          */
-        OverseaVideo?: 'upos-sz-mirrorali.bilivideo.com' | 'upos-sz-mirrorcos.bilivideo.com' | 'upos-sz-mirrorhw.bilivideo.com' | 'upos-sz-mirroraliov.bilivideo.com' | 'upos-sz-mirrorcosov.bilivideo.com' | 'upos-sz-mirrorhwov.bilivideo.com';
+        OverseaVideo?: 'upos-sz-mirrorali.bilivideo.com' | 'upos-sz-mirrorcos.bilivideo.com' | 'upos-sz-mirrorhw.bilivideo.com' | 'upos-sz-mirroraliov.bilivideo.com' | 'upos-sz-mirrorcosov.bilivideo.com' | 'upos-sz-mirrorhwov.bilivideo.com' | 'cn-hk-eq-01-01.bilivideo.com' | 'cn-hk-eq-01-03.bilivideo.com' | 'cn-hk-eq-01-09.bilivideo.com' | 'cn-hk-eq-01-10.bilivideo.com' | 'cn-hk-eq-01-12.bilivideo.com' | 'cn-hk-eq-01-13.bilivideo.com' | 'cn-hk-eq-01-14.bilivideo.com';
     /**
          * [主机名] 重定向 BStar CDN (国际版)
          *
@@ -32,10 +39,17 @@ export interface Settings {
          * - `'upos-sz-mirroraliov.bilivideo.com'` - 阿里云 CDN，海外
          * - `'upos-sz-mirrorcosov.bilivideo.com'` - 腾讯云 CDN，海外
          * - `'upos-sz-mirrorhwov.bilivideo.com'` - 华为云 CDN，海外
+         * - `'cn-hk-eq-01-01.bilivideo.com'` - Equinix IX CDN，香港
+         * - `'cn-hk-eq-01-03.bilivideo.com'` - Equinix IX CDN，香港
+         * - `'cn-hk-eq-01-09.bilivideo.com'` - Equinix IX CDN，香港
+         * - `'cn-hk-eq-01-10.bilivideo.com'` - Equinix IX CDN，香港
+         * - `'cn-hk-eq-01-12.bilivideo.com'` - Equinix IX CDN，香港
+         * - `'cn-hk-eq-01-13.bilivideo.com'` - Equinix IX CDN，香港
+         * - `'cn-hk-eq-01-14.bilivideo.com'` - Equinix IX CDN，香港
          *
          * @defaultValue "upos-sz-mirrorali.bilivideo.com"
          */
-        BStar?: 'upos-sz-mirrorali.bilivideo.com' | 'upos-sz-mirrorcos.bilivideo.com' | 'upos-sz-mirrorhw.bilivideo.com' | 'upos-sz-mirroraliov.bilivideo.com' | 'upos-sz-mirrorcosov.bilivideo.com' | 'upos-sz-mirrorhwov.bilivideo.com';
+        BStar?: 'upos-sz-mirrorali.bilivideo.com' | 'upos-sz-mirrorcos.bilivideo.com' | 'upos-sz-mirrorhw.bilivideo.com' | 'upos-sz-mirroraliov.bilivideo.com' | 'upos-sz-mirrorcosov.bilivideo.com' | 'upos-sz-mirrorhwov.bilivideo.com' | 'cn-hk-eq-01-01.bilivideo.com' | 'cn-hk-eq-01-03.bilivideo.com' | 'cn-hk-eq-01-09.bilivideo.com' | 'cn-hk-eq-01-10.bilivideo.com' | 'cn-hk-eq-01-12.bilivideo.com' | 'cn-hk-eq-01-13.bilivideo.com' | 'cn-hk-eq-01-14.bilivideo.com';
     /**
          * [主机名] 重定向 PCDN 主机名 (中国大陆)
          *
@@ -50,10 +64,17 @@ export interface Settings {
          * - `'upos-sz-mirroraliov.bilivideo.com'` - 阿里云 CDN，海外
          * - `'upos-sz-mirrorcosov.bilivideo.com'` - 腾讯云 CDN，海外
          * - `'upos-sz-mirrorhwov.bilivideo.com'` - 华为云 CDN，海外
+         * - `'cn-hk-eq-01-01.bilivideo.com'` - Equinix IX CDN，香港
+         * - `'cn-hk-eq-01-03.bilivideo.com'` - Equinix IX CDN，香港
+         * - `'cn-hk-eq-01-09.bilivideo.com'` - Equinix IX CDN，香港
+         * - `'cn-hk-eq-01-10.bilivideo.com'` - Equinix IX CDN，香港
+         * - `'cn-hk-eq-01-12.bilivideo.com'` - Equinix IX CDN，香港
+         * - `'cn-hk-eq-01-13.bilivideo.com'` - Equinix IX CDN，香港
+         * - `'cn-hk-eq-01-14.bilivideo.com'` - Equinix IX CDN，香港
          *
          * @defaultValue "upos-sz-mirrorali.bilivideo.com"
          */
-        PCDN?: 'upos-sz-mirrorali.bilivideo.com' | 'upos-sz-mirrorcos.bilivideo.com' | 'upos-sz-mirrorhw.bilivideo.com' | 'upos-sz-mirroraliov.bilivideo.com' | 'upos-sz-mirrorcosov.bilivideo.com' | 'upos-sz-mirrorhwov.bilivideo.com';
+        PCDN?: 'upos-sz-mirrorali.bilivideo.com' | 'upos-sz-mirrorcos.bilivideo.com' | 'upos-sz-mirrorhw.bilivideo.com' | 'upos-sz-mirroraliov.bilivideo.com' | 'upos-sz-mirrorcosov.bilivideo.com' | 'upos-sz-mirrorhwov.bilivideo.com' | 'cn-hk-eq-01-01.bilivideo.com' | 'cn-hk-eq-01-03.bilivideo.com' | 'cn-hk-eq-01-09.bilivideo.com' | 'cn-hk-eq-01-10.bilivideo.com' | 'cn-hk-eq-01-12.bilivideo.com' | 'cn-hk-eq-01-13.bilivideo.com' | 'cn-hk-eq-01-14.bilivideo.com';
     /**
          * [主机名] 重定向 MCDN 主机名 (中国大陆)
          *

@@ -59,6 +59,34 @@ export default defineConfig({
 				{
 					"key": "upos-sz-mirrorhwov.bilivideo.com",
 					"label": "华为云 CDN，海外"
+				},
+				{
+					"key": "cn-hk-eq-01-01.bilivideo.com",
+					"label": "Equinix IX CDN，香港"
+				},
+				{
+					"key": "cn-hk-eq-01-03.bilivideo.com",
+					"label": "Equinix IX CDN，香港"
+				},
+				{
+					"key": "cn-hk-eq-01-09.bilivideo.com",
+					"label": "Equinix IX CDN，香港"
+				},
+				{
+					"key": "cn-hk-eq-01-10.bilivideo.com",
+					"label": "Equinix IX CDN，香港"
+				},
+				{
+					"key": "cn-hk-eq-01-12.bilivideo.com",
+					"label": "Equinix IX CDN，香港"
+				},
+				{
+					"key": "cn-hk-eq-01-13.bilivideo.com",
+					"label": "Equinix IX CDN，香港"
+				},
+				{
+					"key": "cn-hk-eq-01-14.bilivideo.com",
+					"label": "Equinix IX CDN，香港"
 				}
 			],
 		},
@@ -93,6 +121,34 @@ export default defineConfig({
 				{
 					"key": "upos-sz-mirrorhwov.bilivideo.com",
 					"label": "华为云 CDN，海外"
+				},
+				{
+					"key": "cn-hk-eq-01-01.bilivideo.com",
+					"label": "Equinix IX CDN，香港"
+				},
+				{
+					"key": "cn-hk-eq-01-03.bilivideo.com",
+					"label": "Equinix IX CDN，香港"
+				},
+				{
+					"key": "cn-hk-eq-01-09.bilivideo.com",
+					"label": "Equinix IX CDN，香港"
+				},
+				{
+					"key": "cn-hk-eq-01-10.bilivideo.com",
+					"label": "Equinix IX CDN，香港"
+				},
+				{
+					"key": "cn-hk-eq-01-12.bilivideo.com",
+					"label": "Equinix IX CDN，香港"
+				},
+				{
+					"key": "cn-hk-eq-01-13.bilivideo.com",
+					"label": "Equinix IX CDN，香港"
+				},
+				{
+					"key": "cn-hk-eq-01-14.bilivideo.com",
+					"label": "Equinix IX CDN，香港"
 				}
 			],
 		},
@@ -127,6 +183,34 @@ export default defineConfig({
 				{
 					"key": "upos-sz-mirrorhwov.bilivideo.com",
 					"label": "华为云 CDN，海外"
+				},
+				{
+					"key": "cn-hk-eq-01-01.bilivideo.com",
+					"label": "Equinix IX CDN，香港"
+				},
+				{
+					"key": "cn-hk-eq-01-03.bilivideo.com",
+					"label": "Equinix IX CDN，香港"
+				},
+				{
+					"key": "cn-hk-eq-01-09.bilivideo.com",
+					"label": "Equinix IX CDN，香港"
+				},
+				{
+					"key": "cn-hk-eq-01-10.bilivideo.com",
+					"label": "Equinix IX CDN，香港"
+				},
+				{
+					"key": "cn-hk-eq-01-12.bilivideo.com",
+					"label": "Equinix IX CDN，香港"
+				},
+				{
+					"key": "cn-hk-eq-01-13.bilivideo.com",
+					"label": "Equinix IX CDN，香港"
+				},
+				{
+					"key": "cn-hk-eq-01-14.bilivideo.com",
+					"label": "Equinix IX CDN，香港"
 				}
 			],
 		},
