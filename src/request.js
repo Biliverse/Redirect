@@ -22,6 +22,8 @@ Console.info(`FORMAT: ${FORMAT}`);
 	 */
 	const { Settings, Caches, Configs } = setENV("BiliBili", "Redirect", database);
 	Console.logLevel = Settings.LogLevel;
+	let rewriteAuthority = false;
+	let serializeURL = false;
 	// 创建空数据
 	const body = {};
 	// 方法判断
@@ -99,6 +101,13 @@ Console.info(`FORMAT: ${FORMAT}`);
 		case "HEAD":
 		case "OPTIONS":
 		default:
+			if (url.port === "4480") {
+				url.protocol = "http:";
+				url.hostname = url.searchParams.get("xy_usource") || Settings.Host.PCDN;
+				url.port = "";
+				rewriteAuthority = true;
+				break;
+			}
 			// 主机判断
 			switch (url.hostname) {
 				case "upos-sz-mirrorali.bilivideo.com": // 阿里云 CDN
@@ -121,14 +130,31 @@ Console.info(`FORMAT: ${FORMAT}`);
 				case "upos-sz-mirrorcosov.bilivideo.com": // 腾讯云 CDN，海外
 				case "upos-sz-mirrorhwov.bilivideo.com": // 华为云 CDN，海外
 					url.hostname = Settings.Host.OverseaVideo;
+					url.port = "";
+					rewriteAuthority = true;
 					break;
 				case "upos-sz-mirroralibstar1.bilivideo.com": // 阿里云 CDN，海外（东南亚），其他类型的 CDN 应该不能替换为此 Host，但反过来可以。
 				case "upos-sz-mirrorcosbstar1.bilivideo.com": // 腾讯云 CDN，海外（东南亚），其他类型的 CDN 应该不能替换为此 Host，但反过来可以。
 				case "upos-sz-mirrorhwbstar1.bilivideo.com": // 华为云 CDN，海外（东南亚），其他类型的 CDN 应该不能替换为此 Host，但反过来可以。
 				case "upos-bstar1-mirrorakam.akamaized.net": // Akamai CDN，海外（东南亚），有参数校验，其他类型的 CDN 不能直接替换为此 Host。但反过来可以。
 					url.hostname = Settings.Host.BStar;
+					url.port = "";
+					rewriteAuthority = true;
 					break;
 				default:
+					if (/^(?:upos-sz-mirror[a-z0-9-]*ov\.bilivideo\.com|cn-hk-eq-[a-z0-9-]+\.bilivideo\.com|upos-(?:hz|sz)-mirrorakam\.akamaized\.net)$/u.test(url.hostname)) {
+						url.hostname = Settings.Host.OverseaVideo;
+						url.port = "";
+						rewriteAuthority = true;
+						break;
+					}
+					if (/^(?:upos-sz-mirror[a-z0-9-]*bstar1\.bilivideo\.com|upos-bstar1-mirrorakam\.akamaized\.net)$/u.test(url.hostname)) {
+						url.hostname = Settings.Host.BStar;
+						url.port = "";
+						rewriteAuthority = true;
+						break;
+					}
+					if (url.hostname.endsWith(".bilivideo.com")) break;
 					switch (url.port) {
 						case "": {
 							switch (true) {
@@ -138,9 +164,11 @@ Console.info(`FORMAT: ${FORMAT}`);
 											switch (url.protocol) {
 												case "http:":
 													url.port = "8000";
+													rewriteAuthority = true;
 													break;
 												case "https:":
 													url.port = "8082";
+													rewriteAuthority = true;
 													break;
 											}
 											break;
@@ -148,9 +176,11 @@ Console.info(`FORMAT: ${FORMAT}`);
 											switch (url.protocol) {
 												case "http:":
 													url.port = "9102";
+													rewriteAuthority = true;
 													break;
 												case "https:":
 													url.port = "4483";
+													rewriteAuthority = true;
 													break;
 											}
 											break;
@@ -166,17 +196,14 @@ Console.info(`FORMAT: ${FORMAT}`);
 							if (cdn) {
 								url.hostname = `d1--${cdn}.bilivideo.com`;
 								url.port = "";
+								rewriteAuthority = true;
 							} else if (sid) {
 								url.hostname = `${sid}.bilivideo.com`;
 								url.port = "";
+								rewriteAuthority = true;
 							}
 							break;
 						}
-						case "4480": // PCDN
-							url.protocol = "http:";
-							url.hostname = url.searchParams.get("xy_usource") || Settings.Host.PCDN;
-							url.port = "";
-							break;
 							case "8000": // MCDN.v1.resource
 							case "8082": // MCDN.v1.resource
 								break;
@@ -189,12 +216,14 @@ Console.info(`FORMAT: ${FORMAT}`);
 							url.pathname = "";
 							for (const key of url.searchParams.keys()) url.searchParams.delete(key);
 							url.searchParams.set("url", $request.url);
+							serializeURL = true;
 							break;
 						case "9305": // PCDN
 							url.protocol = "http:";
 							url.hostname = url.PATHs.shift();
 							url.port = "";
 							url.pathname = url.PATHs.join("/");
+							serializeURL = true;
 							break;
 					}
 					break;
@@ -204,9 +233,12 @@ Console.info(`FORMAT: ${FORMAT}`);
 		case "TRACE":
 			break;
 	}
-	if ($request.headers?.Host) $request.headers.Host = url.host;
-	if ($request.headers?.[":authority"]) $request.headers[":authority"] = url.host;
-	$request.url = url.toString();
+	if (rewriteAuthority) $request.url = $request.url.replace(/^https?:\/\/[^/?#]+/u, `${url.protocol}//${url.host}`);
+	else if (serializeURL) $request.url = url.toString();
+	if (rewriteAuthority || serializeURL) {
+		if ($request.headers?.Host) $request.headers.Host = url.host;
+		if ($request.headers?.[":authority"]) $request.headers[":authority"] = url.host;
+	}
 	Console.debug(`$request.url: ${$request.url}`);
 })()
 	.catch(e => Console.error(e))
