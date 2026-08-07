@@ -13,14 +13,18 @@
 [General]
 # > TCP Force HTTP Hosts
 # 让 Surge 把 TCP 连接当作 HTTP 请求来处理。Surge HTTP 引擎将处理这些请求，所有的高级功能，如捕获、重写和脚本等都可以使用。
-force-http-engine-hosts = %APPEND% *:4480, *:4483, *:8000, *:8082, *:9102
+force-http-engine-hosts = %APPEND% upos-sz-mirror*ov.bilivideo.com:80, upos-sz-mirror*bstar1.bilivideo.com:80, cn-hk-eq-*.bilivideo.com:80, upos-*-mirrorakam.akamaized.net:80, *:4480, *:4483, *:8000, *:8082, *:9102
+
+[URL Rewrite]
+^http:\/\/(?:upos-sz-mirror[a-z0-9-]*ov\.bilivideo\.com|cn-hk-eq-[a-z0-9-]+\.bilivideo\.com|upos-(?:hz|sz)-mirrorakam\.akamaized\.net)(?::80)?\/upgcxcode\/ http://\{{{Host.OverseaVideo}}}/upgcxcode/ header
+^https:\/\/(?:upos-sz-mirror[a-z0-9-]*ov\.bilivideo\.com|cn-hk-eq-[a-z0-9-]+\.bilivideo\.com|upos-(?:hz|sz)-mirrorakam\.akamaized\.net)(?::(?:443|4483))?\/upgcxcode\/ https://\{{{Host.OverseaVideo}}}/upgcxcode/ header
+^http:\/\/(?:upos-sz-mirror[a-z0-9-]*bstar1\.bilivideo\.com|upos-bstar1-mirrorakam\.akamaized\.net)(?::80)?\/upgcxcode\/ http://\{{{Host.BStar}}}/upgcxcode/ header
+^https:\/\/(?:upos-sz-mirror[a-z0-9-]*bstar1\.bilivideo\.com|upos-bstar1-mirrorakam\.akamaized\.net)(?::(?:443|4483))?\/upgcxcode\/ https://\{{{Host.BStar}}}/upgcxcode/ header
 
 [Script]
-📺 BiliBili.Redirect.CDN.upgcxcode.m4s = type=http-request, pattern=^https?:\/\/.+\.bilivideo\.com\/upgcxcode\/, script-path=https://github.com/BiliUniverse/Redirect/releases/download/v{{@package 'version'}}/request.bundle.js, argument={{{scriptParams}}}
 📺 BiliBili.Redirect.MCDN.v1.resource.m4s = type=http-request, pattern=^https?:\/\/[adbcefxy0-9]+\.mcdn\.bilivideo\.cn(:(8000|8082))?\/v1\/resource\/, script-path=https://github.com/BiliUniverse/Redirect/releases/download/v{{@package 'version'}}/request.bundle.js, argument={{{scriptParams}}}
 📺 BiliBili.Redirect.MCDN.upgcxcode.m4s = type=http-request, pattern=^https?:\/\/[adbcefxy0-9]+\.mcdn\.bilivideo\.cn(:(4483|9102))?\/upgcxcode\/, script-path=https://github.com/BiliUniverse/Redirect/releases/download/v{{@package 'version'}}/request.bundle.js, argument={{{scriptParams}}}
 📺 BiliBili.Redirect.PCDN.upgcxcode.m4s = type=http-request, pattern=^https?:\/\/(.+):4480\/upgcxcode\/, script-path=https://github.com/BiliUniverse/Redirect/releases/download/v{{@package 'version'}}/request.bundle.js, argument={{{scriptParams}}}
-📺 BiliBili.Redirect.Akamaized.upgcxcode.m4s = type=http-request, pattern=^https?:\/\/upos-(hz|bstar1)-mirrorakam\.akamaized\.net/upgcxcode\/, script-path=https://github.com/BiliUniverse/Redirect/releases/download/v{{@package 'version'}}/request.bundle.js, argument={{{scriptParams}}}
 
 [MITM]
-hostname = %APPEND% *.mcdn.bilivideo.cn, upos-sz-mirror*bstar1.bilivideo.com, upos-*-mirrorakam.akamaized.net
+hostname = %APPEND% *.mcdn.bilivideo.cn, upos-sz-mirror*ov.bilivideo.com, upos-sz-mirror*bstar1.bilivideo.com, cn-hk-eq-*.bilivideo.com, upos-*-mirrorakam.akamaized.net, upos-sz-mirror*ov.bilivideo.com:4483, upos-sz-mirror*bstar1.bilivideo.com:4483, cn-hk-eq-*.bilivideo.com:4483, upos-*-mirrorakam.akamaized.net:4483

@@ -1,6 +1,7 @@
 ### 🛠️ Bug Fixes
   * 补充 Equinix IX CDN 主机名 by @ltysbc
   * 修复 Stash 平台 80 端口明文 CDN 请求未进入 HTTP 引擎、导致脚本不触发的问题 by @kiliasu
+  * 修复 Surge 平台海外 CDN 请求触发不完整，并避免重定向重新序列化视频签名参数 by @rdself
 
 ### 🔣 Dependencies
   * 升级了 `@nsnanocat/grpc`
