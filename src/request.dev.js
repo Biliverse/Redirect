@@ -127,6 +127,7 @@ Console.info(`FORMAT: ${FORMAT}`);
 				case "upos-sz-mirror08ct.bilivideo.com": // 华为云 CDN，融合 CDN
 					break;
 				case "upos-hz-mirrorakam.akamaized.net": // Akamai CDN，海外，有参数校验，其他类型的 CDN 不能直接替换为此 Host。但反过来可以。
+				case "upos-sz-mirrorakam.akamaized.net": // Akamai CDN，海外，有参数校验，其他类型的 CDN 不能直接替换为此 Host。但反过来可以。
 				case "upos-sz-mirrorawsov.bilivideo.com": // AWS CDN，海外
 				case "upos-sz-mirroraliov.bilivideo.com": // 阿里云 CDN，海外
 				case "upos-sz-mirrorcosov.bilivideo.com": // 腾讯云 CDN，海外
@@ -144,13 +145,19 @@ Console.info(`FORMAT: ${FORMAT}`);
 					rewriteAuthority = true;
 					break;
 				default:
-					if (/^(?:upos-sz-mirror[a-z0-9-]*ov\.bilivideo\.com|cn-hk-eq-[a-z0-9-]+\.bilivideo\.com|upos-(?:hz|sz)-mirrorakam\.akamaized\.net)$/u.test(url.hostname)) {
+					if (url.hostname.startsWith("upos-sz-mirror") && url.hostname.endsWith("ov.bilivideo.com")) {
 						url.hostname = Settings.Host.OverseaVideo;
 						url.port = "";
 						rewriteAuthority = true;
 						break;
 					}
-					if (/^(?:upos-sz-mirror[a-z0-9-]*bstar1\.bilivideo\.com|upos-bstar1-mirrorakam\.akamaized\.net)$/u.test(url.hostname)) {
+					if (url.hostname.startsWith("cn-hk-eq-") && url.hostname.endsWith(".bilivideo.com")) {
+						url.hostname = Settings.Host.OverseaVideo;
+						url.port = "";
+						rewriteAuthority = true;
+						break;
+					}
+					if (url.hostname.startsWith("upos-sz-mirror") && url.hostname.endsWith("bstar1.bilivideo.com")) {
 						url.hostname = Settings.Host.BStar;
 						url.port = "";
 						rewriteAuthority = true;
