@@ -23,8 +23,6 @@ Console.info(`FORMAT: ${FORMAT}`);
 	 */
 	const { Settings, Caches, Configs } = setENV("BiliBili", "Redirect", database);
 	Console.logLevel = Settings.LogLevel;
-	let rewriteAuthority = false;
-	let serializeURL = false;
 	const originalHostname = url.hostname;
 	// 创建空数据
 	const body = {};
@@ -128,7 +126,6 @@ Console.info(`FORMAT: ${FORMAT}`);
 				case "upos-sz-mirrorhwov.bilivideo.com": // 华为云 CDN，海外
 					url.hostname = Settings.Host.OverseaVideo;
 					url.port = "";
-					rewriteAuthority = true;
 					break;
 				case "upos-sz-mirroralibstar1.bilivideo.com": // 阿里云 CDN，海外（东南亚），其他类型的 CDN 应该不能替换为此 Host，但反过来可以。
 				case "upos-sz-mirrorcosbstar1.bilivideo.com": // 腾讯云 CDN，海外（东南亚），其他类型的 CDN 应该不能替换为此 Host，但反过来可以。
@@ -136,25 +133,21 @@ Console.info(`FORMAT: ${FORMAT}`);
 				case "upos-bstar1-mirrorakam.akamaized.net": // Akamai CDN，海外（东南亚），有参数校验，其他类型的 CDN 不能直接替换为此 Host。但反过来可以。
 					url.hostname = Settings.Host.BStar;
 					url.port = "";
-					rewriteAuthority = true;
 					break;
 				default:
 					if (url.hostname.startsWith("upos-sz-mirror") && url.hostname.endsWith("ov.bilivideo.com")) {
 						url.hostname = Settings.Host.OverseaVideo;
 						url.port = "";
-						rewriteAuthority = true;
 						break;
 					}
 					if (url.hostname.startsWith("cn-hk-eq-") && url.hostname.endsWith(".bilivideo.com")) {
 						url.hostname = Settings.Host.OverseaVideo;
 						url.port = "";
-						rewriteAuthority = true;
 						break;
 					}
 					if (url.hostname.startsWith("upos-sz-mirror") && url.hostname.endsWith("bstar1.bilivideo.com")) {
 						url.hostname = Settings.Host.BStar;
 						url.port = "";
-						rewriteAuthority = true;
 						break;
 					}
 					switch (url.port) {
@@ -166,11 +159,9 @@ Console.info(`FORMAT: ${FORMAT}`);
 											switch (url.protocol) {
 												case "http:":
 													url.port = "8000";
-													rewriteAuthority = true;
 													break;
 												case "https:":
 													url.port = "8082";
-													rewriteAuthority = true;
 													break;
 											}
 											break;
@@ -178,11 +169,9 @@ Console.info(`FORMAT: ${FORMAT}`);
 											switch (url.protocol) {
 												case "http:":
 													url.port = "9102";
-													rewriteAuthority = true;
 													break;
 												case "https:":
 													url.port = "4483";
-													rewriteAuthority = true;
 													break;
 											}
 											break;
@@ -198,11 +187,9 @@ Console.info(`FORMAT: ${FORMAT}`);
 							if (cdn) {
 								url.hostname = `d1--${cdn}.bilivideo.com`;
 								url.port = "";
-								rewriteAuthority = true;
 							} else if (sid) {
 								url.hostname = `${sid}.bilivideo.com`;
 								url.port = "";
-								rewriteAuthority = true;
 							}
 							break;
 						}
@@ -210,7 +197,6 @@ Console.info(`FORMAT: ${FORMAT}`);
 							url.protocol = "http:";
 							url.hostname = url.searchParams.get("xy_usource") || Settings.Host.PCDN;
 							url.port = "";
-							rewriteAuthority = true;
 							break;
 						case "8000": // MCDN.v1.resource
 						case "8082": // MCDN.v1.resource
@@ -229,14 +215,12 @@ Console.info(`FORMAT: ${FORMAT}`);
 							url.pathname = "";
 							url.search = "";
 							url.searchParams.set("url", $request.url);
-							serializeURL = true;
 							break;
 						case "9305": // PCDN
 							url.protocol = "http:";
 							url.hostname = PATHs.shift();
 							url.port = "";
 							url.pathname = PATHs.join("/");
-							serializeURL = true;
 							break;
 					}
 					break;
@@ -246,8 +230,7 @@ Console.info(`FORMAT: ${FORMAT}`);
 		case "TRACE":
 			break;
 	}
-	if (rewriteAuthority) $request.url = $request.url.replace(/^https?:\/\/[^/?#]+/u, `${url.protocol}//${url.host}`);
-	else if (serializeURL) $request.url = url.toString();
+	$request.url = url.toString();
 	if (url.hostname !== originalHostname) {
 		if ($request.headers?.Host) $request.headers.Host = url.hostname;
 		if ($request.headers?.[":authority"]) $request.headers[":authority"] = url.hostname;
