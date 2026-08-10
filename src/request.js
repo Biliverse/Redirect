@@ -24,6 +24,7 @@ Console.info(`FORMAT: ${FORMAT}`);
 	Console.logLevel = Settings.LogLevel;
 	let rewriteAuthority = false;
 	let serializeURL = false;
+	const originalHostname = url.hostname;
 	// 创建空数据
 	const body = {};
 	// 方法判断
@@ -241,9 +242,9 @@ Console.info(`FORMAT: ${FORMAT}`);
 	}
 	if (rewriteAuthority) $request.url = $request.url.replace(/^https?:\/\/[^/?#]+/u, `${url.protocol}//${url.host}`);
 	else if (serializeURL) $request.url = url.toString();
-	if (rewriteAuthority || serializeURL) {
-		if ($request.headers?.Host) $request.headers.Host = url.host;
-		if ($request.headers?.[":authority"]) $request.headers[":authority"] = url.host;
+	if (url.hostname !== originalHostname) {
+		if ($request.headers?.Host) $request.headers.Host = url.hostname;
+		if ($request.headers?.[":authority"]) $request.headers[":authority"] = url.hostname;
 	}
 	Console.debug(`$request.url: ${$request.url}`);
 })()
