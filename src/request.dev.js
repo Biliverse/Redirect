@@ -233,9 +233,9 @@ Console.info(`FORMAT: ${FORMAT}`);
 							break;
 						case "9305": // PCDN
 							url.protocol = "http:";
-							url.hostname = url.PATHs.shift();
+							url.hostname = PATHs.shift();
 							url.port = "";
-							url.pathname = url.PATHs.join("/");
+							url.pathname = PATHs.join("/");
 							serializeURL = true;
 							break;
 					}
