@@ -221,7 +221,7 @@ Console.info(`FORMAT: ${FORMAT}`);
 							url.hostname = Settings.Host.MCDN;
 							url.port = "";
 							url.pathname = "";
-							for (const key of url.searchParams.keys()) url.searchParams.delete(key);
+							url.search = "";
 							url.searchParams.set("url", $request.url);
 							serializeURL = true;
 							break;
