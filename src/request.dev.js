@@ -103,13 +103,6 @@ Console.info(`FORMAT: ${FORMAT}`);
 		case "HEAD":
 		case "OPTIONS":
 		default:
-			if (url.port === "4480") {
-				url.protocol = "http:";
-				url.hostname = url.searchParams.get("xy_usource") || Settings.Host.PCDN;
-				url.port = "";
-				rewriteAuthority = true;
-				break;
-			}
 			// 主机判断
 			switch (url.hostname) {
 				case "upos-sz-mirrorali.bilivideo.com": // 阿里云 CDN
@@ -163,7 +156,6 @@ Console.info(`FORMAT: ${FORMAT}`);
 						rewriteAuthority = true;
 						break;
 					}
-					if (url.hostname.endsWith(".bilivideo.com")) break;
 					switch (url.port) {
 						case "": {
 							switch (true) {
@@ -213,6 +205,12 @@ Console.info(`FORMAT: ${FORMAT}`);
 							}
 							break;
 						}
+						case "4480": // PCDN
+							url.protocol = "http:";
+							url.hostname = url.searchParams.get("xy_usource") || Settings.Host.PCDN;
+							url.port = "";
+							rewriteAuthority = true;
+							break;
 						case "8000": // MCDN.v1.resource
 						case "8082": // MCDN.v1.resource
 							// 不可修改
@@ -222,6 +220,7 @@ Console.info(`FORMAT: ${FORMAT}`);
 							break;
 						case "4483": // MCDN.upgcxcode
 						case "9102": // MCDN.upgcxcode
+							if (url.hostname.endsWith(".bilivideo.com")) break;
 							if (url.searchParams.has("originalUrl")) break; // 跳过 MCDN 重定向
 							url.protocol = "http:";
 							url.hostname = Settings.Host.MCDN;
