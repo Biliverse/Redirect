@@ -1,5 +1,5 @@
 import getStorage from "@nsnanocat/util/getStorage.mjs";
-import { Console, Lodash as _ } from "@nsnanocat/util";
+import { Console, Storage, Lodash as _ } from "@nsnanocat/util";
 
 /**
  * Set Environment Variables
@@ -11,7 +11,10 @@ import { Console, Lodash as _ } from "@nsnanocat/util";
  */
 export default function setENV(name, platforms, database) {
 	Console.log("☑️ Set Environment Variables");
+	const argumentStorage = globalThis.$argument.Storage;
+	globalThis.$argument.Storage = Storage.getItem(`@${name}.${platforms}.Settings`, {}).Storage ?? argumentStorage;
 	const { Settings, Caches, Configs } = getStorage(name, platforms, database);
+	globalThis.$argument.Storage = argumentStorage;
 	/***************** Settings *****************/
 	Console.info(`typeof Settings: ${typeof Settings}`, `Settings: ${JSON.stringify(Settings, null, 2)}`);
 	/***************** Caches *****************/
