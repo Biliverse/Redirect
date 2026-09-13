@@ -31,7 +31,7 @@ force-http-engine-hosts = upos-sz-mirror*.bilivideo.com:80, cn-hk-eq-*.bilivideo
 ^https:\/\/upos-bstar1-mirrorakam\.akamaized\.net(?::(?:443|4483))?\/upgcxcode\/ https://\{{{Host.BStar}}}/upgcxcode/ header
 
 [Rewrite]
-response if ${url} ~= /^https:\/\/(?:biliverse\.github\.io|app\.bilibili\.com)\/configs\/Redirect(?:\?.*)?$/ then response.body.mock_file("json", "https://gist.githubusercontent.com/VirgilClyne/0c193c4ff4b930d765b1ca4b406ec1b9/raw/BiliBili.Redirect.dev.boxjs.json", 200) | response.header.set("X-PreferencePanes-Version", "{{version}}") | response.header.set("Cache-Control", "no-store")
+response if ${url} ~= /^https:\/\/(?:biliverse\.github\.io|app\.bilibili\.com)\/api\/Redirect(?:\?.*)?$/ then response.body.mock_file("json", "https://gist.githubusercontent.com/VirgilClyne/0c193c4ff4b930d765b1ca4b406ec1b9/raw/BiliBili.Redirect.dev.boxjs.json", 200) | response.header.set("X-PreferencePanes-Version", "{{version}}") | response.header.set("Cache-Control", "no-store")
 
 [Script]
 http-request ^https?:\/\/.+\.bilivideo\.com(?::(?:80|443|4483))?\/upgcxcode\/ script-path=https://gist.githubusercontent.com/VirgilClyne/0c193c4ff4b930d765b1ca4b406ec1b9/raw/request.dev.bundle.js, tag=📺 BiliBili.Redirect.CDN.upgcxcode.m4s, argument={{{scriptParams}}}

@@ -1,5 +1,5 @@
 ### 🔄 Other Changes
-  * 移除全部 PreferencePanes `web.js`、`api.js` 和 `/settings/**` 规则，仅保留 Redirect 自身的 `/configs/Redirect`；通用前后端统一由 Enhanced 提供
+  * 将 `HEAD/GET /api/Redirect` 直接 Mock 到同版 BoxJS；移除旧 `/configs/Redirect` 以及全部 PreferencePanes `web.js`、`api.js` 和 `/settings/**` 规则
 
 ### 🛠️ Bug Fixes
   * 补充 Equinix IX CDN 主机名 by @ltysbc

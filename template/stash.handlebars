@@ -48,7 +48,7 @@ http:
     - ^https:\/\/upos-sz-mirror[a-z0-9-]*bstar1\.bilivideo\.com(?::(?:443|4483))?\/upgcxcode\/ https://\{{{Host.BStar}}}/upgcxcode/ header
     - ^https:\/\/upos-bstar1-mirrorakam\.akamaized\.net(?::(?:443|4483))?\/upgcxcode\/ https://\{{{Host.BStar}}}/upgcxcode/ header
   script:
-    - match: ^https:\/\/(?:biliverse\.github\.io|app\.bilibili\.com)\/configs\/Redirect(?:\?.*)?$
+    - match: ^https:\/\/(?:biliverse\.github\.io|app\.bilibili\.com)\/api\/Redirect(?:\?.*)?$
       name: PreferencePanes.Config.Redirect
       type: request
       require-body: false
