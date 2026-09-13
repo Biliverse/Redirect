@@ -1,3 +1,6 @@
+### 🔄 Other Changes
+  * 设置页面资源与模块 API 分离，分别使用 PreferencePanes 1.0.0 的 `web.js` 和 `api.js`
+
 ### 🛠️ Bug Fixes
   * 补充 Equinix IX CDN 主机名 by @ltysbc
   * 修复 Stash 平台 80 端口明文 CDN 请求未进入 HTTP 引擎、导致脚本不触发的问题 by @kiliasu
