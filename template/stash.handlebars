@@ -52,11 +52,6 @@ http:
       name: PreferencePanes.Config.Redirect
       type: request
       require-body: false
-    - match: ^https:\/\/(?:biliverse\.github\.io|app\.bilibili\.com)\/api\/Redirect(?:\/(?:get|set|delete))?\/?(?:\?.*)?$
-      name: PreferencePanes.API
-      type: request
-      require-body: true
-      max-size: 65536
     - match: ^https?:\/\/.+\.bilivideo\.com(?::(?:80|443|4483))?\/upgcxcode\/
       name: "📺 BiliBili.Redirect.request"
       type: request
@@ -87,9 +82,6 @@ http:
 script-providers:
   PreferencePanes.Config.Redirect:
     url: https://github.com/Biliverse/Redirect/releases/download/v{{@package 'version'}}/config.bundle.js
-    interval: 86400
-  PreferencePanes.API:
-    url: https://github.com/NSNanoCat/PreferencePanes/releases/latest/download/api.js
     interval: 86400
   "📺 BiliBili.Redirect.request":
     url: https://github.com/Biliverse/Redirect/releases/download/v{{@package 'version'}}/request.bundle.js
