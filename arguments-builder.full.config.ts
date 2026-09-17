@@ -233,6 +233,7 @@ export const args: ArgumentItem[] = [
 		name: "[储存] 配置类型",
 		defaultValue: "Argument",
 		type: "string",
+		exclude: ["boxjs"],
 		options: [
 			{ key: "Argument", label: "优先使用来自 $argument 的配置，$argument 不包含的设置项由 PersistentStore (BoxJs) 提供" },
 			{ key: "PersistentStore", label: "只使用 PersistentStore (BoxJs) 提供的配置" },

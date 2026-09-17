@@ -1,7 +1,6 @@
-# v0.2.23
+# v0.2.24
 
 ### 🔄 Other Changes
 
-  * 升级 `@nsnanocat/util`。
-  * 持久化储存空间由 `BiliBili` 更名为 `Biliverse`；既有设置不会继续读取。
-  * BoxJS 自动生成的配置面板与 Biliverse 聚合面板统一使用新的储存空间。
+  * 移除不会影响运行时行为的 BoxJS `Storage` 配置项；持久化策略仍由插件参数决定。
+  * 更新 BoxJS 的 CDN 主机名选项。
