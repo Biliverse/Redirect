@@ -18,7 +18,7 @@ export async function Response($request, $response) {
 	 * 设置
 	 * @type {{Settings: import('../types').Settings}}
 	 */
-	const { Settings } = setENV("BiliBili", "Redirect", database);
+	const { Settings } = setENV("Biliverse", "Redirect", database);
 	Console.logLevel = Settings.LogLevel;
 	// 创建空数据
 	let body = { code: 0, message: "0", data: {} };

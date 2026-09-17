@@ -23,7 +23,7 @@ export const output = {
 	},
 	boxjsSettings: {
 		path: "./template/boxjs.settings.json",
-		scope: "@BiliBili.Redirect.Settings",
+		scope: "@Biliverse.Redirect.Settings",
 	},
 };
 

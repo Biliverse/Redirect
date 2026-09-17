@@ -18,7 +18,7 @@ export async function Request($request) {
 	 * 设置
 	 * @type {{Settings: import('../types').Settings}}
 	 */
-	const { Settings } = setENV("BiliBili", "Redirect", database);
+	const { Settings } = setENV("Biliverse", "Redirect", database);
 	Console.logLevel = Settings.LogLevel;
 	const originalHostname = url.hostname;
 	// 方法判断

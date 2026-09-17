@@ -61,7 +61,7 @@
 		"@biliverse/protobuf": "^1.0.0",
 		"@nsnanocat/grpc": "^1.1.0",
 		"@nsnanocat/url": "^1.2.6",
-		"@nsnanocat/util": "^2.7.4",
+		"@nsnanocat/util": "^2.7.5",
 		"hono": "^4.13.5"
 	}
 }
