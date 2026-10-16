@@ -63,5 +63,10 @@
 		"@nsnanocat/url": "^1.2.6",
 		"@nsnanocat/util": "^2.7.5",
 		"hono": "^4.13.5"
+	},
+	"overrides": {
+		"@iringo/surge2egern": {
+			"puppeteer": "25.7.0"
+		}
 	}
 }
