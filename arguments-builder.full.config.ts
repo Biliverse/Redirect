@@ -49,6 +49,14 @@ export const args: ArgumentItem[] = [
 				label: "华为云 CDN，融合 CDN",
 			},
 			{
+				key: "upos-sz-mirrorhwo1.bilivideo.com",
+				label: "华为云 CDN，融合 CDN（mirrorhwo1）",
+			},
+			{
+				key: "upos-sz-mirror08c.bilivideo.com",
+				label: "华为云 CDN，融合 CDN（mirror08c）",
+			},
+			{
 				key: "upos-sz-mirroraliov.bilivideo.com",
 				label: "阿里云 CDN，海外",
 			},
@@ -111,6 +119,14 @@ export const args: ArgumentItem[] = [
 				label: "华为云 CDN，融合 CDN",
 			},
 			{
+				key: "upos-sz-mirrorhwo1.bilivideo.com",
+				label: "华为云 CDN，融合 CDN（mirrorhwo1）",
+			},
+			{
+				key: "upos-sz-mirror08c.bilivideo.com",
+				label: "华为云 CDN，融合 CDN（mirror08c）",
+			},
+			{
 				key: "upos-sz-mirroraliov.bilivideo.com",
 				label: "阿里云 CDN，海外",
 			},
@@ -171,6 +187,14 @@ export const args: ArgumentItem[] = [
 			{
 				key: "upos-sz-mirrorhw.bilivideo.com",
 				label: "华为云 CDN，融合 CDN",
+			},
+			{
+				key: "upos-sz-mirrorhwo1.bilivideo.com",
+				label: "华为云 CDN，融合 CDN（mirrorhwo1）",
+			},
+			{
+				key: "upos-sz-mirror08c.bilivideo.com",
+				label: "华为云 CDN，融合 CDN（mirror08c）",
 			},
 			{
 				key: "upos-sz-mirroraliov.bilivideo.com",
