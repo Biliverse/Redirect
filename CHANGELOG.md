@@ -1,6 +1,5 @@
-# v0.2.24
+# v0.2.25
 
-### 🔄 Other Changes
+### 🆕 New Features
 
-  * 移除不会影响运行时行为的 BoxJS `Storage` 配置项；持久化策略仍由插件参数决定。
-  * 更新 BoxJS 的 CDN 主机名选项。
+  * 为 OverseaVideo、BStar 和 PCDN 的 CDN 主机名选项新增 `upos-sz-mirrorhwo1.bilivideo.com` 与 `upos-sz-mirror08c.bilivideo.com`，支持通过插件参数或 BoxJS 手动选择。（[#12](https://github.com/Biliverse/Redirect/issues/12)）
